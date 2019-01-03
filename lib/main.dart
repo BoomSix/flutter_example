@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.pink,
       ),
       home: MyHomePage(title: '6666 Flutter'),
     );
@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      _counter--;
     });
   }
 
@@ -90,7 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          verticalDirection: VerticalDirection.up,
           children: <Widget>[
+            Text("kkkkkk"),
             Text(
               'click the button this many times:',
             ),
@@ -98,13 +102,38 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Row(
+              // 将主轴方向上的空白区域等分，使得子控件之间的空白区域相等，
+              // 两端的子控件都靠近首尾，没有间隙。
+//              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               将主轴方向上的空白区域等分，使得子控件之间的空白区域相等，
+// 两端的子控件都靠近首尾，首尾子控件的空白区域为1/2。
+//              mainAxisAlignment: MainAxisAlignment.spaceAround,
+//            将主轴方向上的空白区域等分，使得子控件之间的空白区域相等，包括首尾。
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              textBaseline: TextBaseline.alphabetic,
+              textDirection: TextDirection.rtl,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Icon(Icons.palette),
+                Icon(Icons.pan_tool),
+                FlutterLogo(
+                    textColor: Colors.amberAccent,
+                    size: 60,
+                    curve: Curves.bounceInOut),
+                Text("777"),
+                Text("888"),
+                Text("999")
+              ],
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.accessible_forward),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

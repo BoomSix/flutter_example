@@ -53,6 +53,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    //兼容x86模拟器(build不了无法打包，暂去掉)
+//    splits{
+//        abi {
+//            enable true
+//            reset()
+//            include 'x86', 'armeabi-v7a','x86_64'
+//            universalApk true
+//        }
+//    }
 }
 
 flutter {
