@@ -92,15 +92,108 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
-          verticalDirection: VerticalDirection.up,
+          verticalDirection: VerticalDirection.down,
           children: <Widget>[
-            Text("kkkkkk"),
+            Text("55"),
             Text(
-              'click the button this many times:',
+              '0000999999999999999999999999999999999999999999999999999999999999999999999999999999',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  inherit: false,
+                  color: Colors.grey,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                  decorationColor: Colors.red,
+                  decoration: TextDecoration.lineThrough,
+                  decorationStyle: TextDecorationStyle.wavy,
+                  letterSpacing: 2, //字符间距
+                  wordSpacing: 10, //单词间距
+                  fontWeight: FontWeight.bold),
             ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
+            ),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      gapPadding: 10,
+                      borderRadius: BorderRadius.circular(6),
+                      borderSide: BorderSide(color: Colors.yellow)),
+//                  focusedBorder: UnderlineInputBorder(),
+                  icon: Icon(Icons.access_alarm), //输入框外左侧即下划线外
+                  suffixIcon: Icon(Icons.pan_tool), //输入框内右侧
+//                suffixText: 'suffixText',
+//                prefixText: 'prefixText',
+                  prefixIcon: Icon(Icons.palette), //输入框内左侧
+//                  labelText: '上部提示文字',
+                  contentPadding: EdgeInsets.only(bottom: 20)
+//                  helperText: '底部提示文字',
+//                  hintText: '请输入电话号码'
+                  ),
+            ),
+            TextField(
+              keyboardType: TextInputType.text,
+              onSubmitted: (value) {
+                print("------------文字提交触发（键盘按键）$value--");
+              },
+              onEditingComplete: () {
+                print("----------------编辑完成---");
+              },
+              onChanged: (value) {
+                print("----------------输入框中内容为:$value--");
+              },
+            ),
+            Center(
+              child: Image.asset(
+                'images/dog.png',
+                width: 100,
+                height: 100,
+              ),
+            ),
+            Stack(
+              children: <Widget>[
+                Image.network(
+                  'https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=2b2e9cfcfd1f3a294ec5dd9cf84cd754/d0c8a786c9177f3ec073c12f7dcf3bc79f3d5648.jpg',
+//                  width: 300,
+                  fit: BoxFit.fitWidth,
+                  height: 200,
+                ),
+                Positioned(
+                  child: Text(
+                    'stack第二层',
+                    style: TextStyle(color: Colors.cyanAccent),
+                  ),
+                  left: 10,
+                  top: 10,
+                ),
+                // ''' $''' 之间的内，按编辑器显示的布局，即换行之类
+                Positioned(
+                  child: Text(
+//                    'stack第三层' +
+                    '''
+                  aaa
+                  ddd
+                  ccc
+                  
+                  ''',
+                    style: TextStyle(color: Colors.red),
+                  ),
+                  left: 30,
+                  top: 30,
+                ),
+                //opacity 即透明层
+                Opacity(
+                  opacity: 0.5,
+                  child: new Container(
+                    width: 200.0,
+                    height: 220.0,
+                    decoration: new BoxDecoration(color: Colors.amber),
+                  ),
+                ),
+              ],
             ),
             Row(
               // 将主轴方向上的空白区域等分，使得子控件之间的空白区域相等，
@@ -124,6 +217,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     curve: Curves.bounceInOut),
                 Text("777"),
                 Text("888"),
+                Text(
+                  "8888",
+                ),
                 Text("999")
               ],
             )
