@@ -155,44 +155,60 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Stack(
               children: <Widget>[
-                Image.network(
-                  'https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=2b2e9cfcfd1f3a294ec5dd9cf84cd754/d0c8a786c9177f3ec073c12f7dcf3bc79f3d5648.jpg',
+                GestureDetector(
+                  onDoubleTap: () {
+                    print("----------------响应了:onDoubleTap--");
+                  },
+                  onTap: () {
+                    print("----------------响应了:onTap--");
+                  },
+                  onLongPress: () {
+                    print("----------------响应了:onLongPress--");
+                  },
+                  onVerticalDragDown: (value) {
+                    print("----------------响应了:onVerticalDragDown--");
+                  },
+                  child: Image.network(
+                    'https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=2b2e9cfcfd1f3a294ec5dd9cf84cd754/d0c8a786c9177f3ec073c12f7dcf3bc79f3d5648.jpg',
 //                  width: 300,
-                  fit: BoxFit.fitWidth,
-                  height: 200,
-                ),
-                Positioned(
-                  child: Text(
-                    'stack第二层',
-                    style: TextStyle(color: Colors.cyanAccent),
-                  ),
-                  left: 10,
-                  top: 10,
-                ),
-                // ''' $''' 之间的内，按编辑器显示的布局，即换行之类
-                Positioned(
-                  child: Text(
-//                    'stack第三层' +
-                    '''
-                  aaa
-                  ddd
-                  ccc
-                  
-                  ''',
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  left: 30,
-                  top: 30,
-                ),
-                //opacity 即透明层
-                Opacity(
-                  opacity: 0.5,
-                  child: new Container(
-                    width: 200.0,
-                    height: 220.0,
-                    decoration: new BoxDecoration(color: Colors.amber),
+                    fit: BoxFit.fitWidth,
+                    height: 200,
                   ),
                 ),
+                //下面的覆盖上层，导致GestureDetector不响应。
+
+//                Positioned(
+//                  child: Text(
+//                    'stack第二层',
+//                    style: TextStyle(color: Colors.cyanAccent),
+//                  ),
+//                  left: 10,
+//                  top: 10,
+//                ),
+//                // ''' $''' 之间的内，按编辑器显示的布局，即换行之类
+//                Positioned(
+//                  child: Text(
+////                    'stack第三层' +
+//                    '''
+//                  aaa
+//                  ddd
+//                  ccc
+//
+//                  ''',
+//                    style: TextStyle(color: Colors.red),
+//                  ),
+//                  left: 30,
+//                  top: 30,
+//                ),
+//                //opacity 即透明层
+//                Opacity(
+//                  opacity: 0.5,
+//                  child: new Container(
+//                    width: 200.0,
+//                    height: 220.0,
+//                    decoration: new BoxDecoration(color: Colors.amber),
+//                  ),
+//                ),
               ],
             ),
             Row(
@@ -220,7 +236,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   "8888",
                 ),
-                Text("999")
+                Text(
+                  "999",
+                )
               ],
             )
           ],
